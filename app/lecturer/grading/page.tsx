@@ -1,6 +1,6 @@
 'use client';
 
-import { FileText, Clock, CheckCircle, User, TrendingUp, Sparkles, Edit, X } from 'lucide-react';
+import { FileText, Clock, CheckCircle, User, TrendingUp, Sparkles, Edit, X, CheckCircle2, XCircle, Settings } from 'lucide-react';
 import { useState } from 'react';
 
 interface Submission {
@@ -9,12 +9,17 @@ interface Submission {
   assignment: string;
   student: string;
   submitted: string;
-  status: 'pending' | 'graded';
+  status: 'pending' | 'graded' | 'ai-pending';
   aiScore: number | null;
   plagiarismScore: number | null;
   correctness: number | null;
   grade: string | null;
   feedback: string | null;
+  aiStatus?: 'pending' | 'accepted' | 'rejected' | 'adjusted';
+  originalAiScore?: number | null;
+  originalPlagiarismScore?: number | null;
+  originalCorrectness?: number | null;
+  originalGrade?: string | null;
 }
 
 const GradingPage = () => {
@@ -25,12 +30,17 @@ const GradingPage = () => {
       assignment: 'Practice Assignment: Behaviour Observation',
       student: 'Sarah Johnson',
       submitted: '2025-11-10T14:30:00',
-      status: 'pending',
-      aiScore: null,
-      plagiarismScore: null,
-      correctness: null,
-      grade: null,
+      status: 'ai-pending',
+      aiScore: 88,
+      plagiarismScore: 4,
+      correctness: 85,
+      grade: 'A',
       feedback: null,
+      aiStatus: 'pending',
+      originalAiScore: 88,
+      originalPlagiarismScore: 4,
+      originalCorrectness: 85,
+      originalGrade: 'A',
     },
     {
       id: 2,
@@ -44,6 +54,11 @@ const GradingPage = () => {
       correctness: 88,
       grade: 'A',
       feedback: 'Excellent work! Well-structured inclusion plan with practical strategies and strong understanding of inclusive practices.',
+      aiStatus: 'accepted',
+      originalAiScore: 92,
+      originalPlagiarismScore: 3,
+      originalCorrectness: 88,
+      originalGrade: 'A',
     },
     {
       id: 3,
@@ -51,12 +66,17 @@ const GradingPage = () => {
       assignment: 'Practice Assignment: Behaviour Observation',
       student: 'Emma Wilson',
       submitted: '2025-11-10T16:45:00',
-      status: 'pending',
-      aiScore: null,
-      plagiarismScore: null,
-      correctness: null,
-      grade: null,
+      status: 'ai-pending',
+      aiScore: 75,
+      plagiarismScore: 12,
+      correctness: 72,
+      grade: 'B',
       feedback: null,
+      aiStatus: 'pending',
+      originalAiScore: 75,
+      originalPlagiarismScore: 12,
+      originalCorrectness: 72,
+      originalGrade: 'B',
     },
     {
       id: 4,
@@ -65,11 +85,16 @@ const GradingPage = () => {
       student: 'David Lee',
       submitted: '2025-11-08T09:20:00',
       status: 'graded',
-      aiScore: 78,
-      plagiarismScore: 8,
-      correctness: 75,
-      grade: 'B+',
+      aiScore: 82,
+      plagiarismScore: 6,
+      correctness: 80,
+      grade: 'A-',
       feedback: 'Good effort with practical examples, but needs more depth in analysis of inclusion strategies and their implementation.',
+      aiStatus: 'adjusted',
+      originalAiScore: 78,
+      originalPlagiarismScore: 8,
+      originalCorrectness: 75,
+      originalGrade: 'B+',
     },
   ]);
 
@@ -85,7 +110,7 @@ const GradingPage = () => {
 
   const handleOpenGradingModal = (submission: Submission) => {
     setSelectedSubmission(submission);
-    if (submission.status === 'graded' && submission.aiScore !== null) {
+    if (submission.aiScore !== null) {
       setGradingData({
         aiScore: submission.aiScore,
         plagiarismScore: submission.plagiarismScore || 0,
@@ -111,6 +136,51 @@ const GradingPage = () => {
     setIsGradingModalOpen(true);
   };
 
+  const handleAcceptAI = (submissionId: number) => {
+    const submission = submissions.find(s => s.id === submissionId);
+    if (submission && submission.aiScore !== null) {
+      setSubmissions(submissions.map(s => 
+        s.id === submissionId 
+          ? { 
+              ...s, 
+              status: 'graded' as const,
+              aiStatus: 'accepted' as const,
+              feedback: s.feedback || 'AI assessment accepted. Good work!'
+            }
+          : s
+      ));
+      alert('AI assessment accepted and grade finalized!');
+    }
+  };
+
+  const handleRejectAI = (submissionId: number) => {
+    const submission = submissions.find(s => s.id === submissionId);
+    if (submission) {
+      setSubmissions(submissions.map(s => 
+        s.id === submissionId 
+          ? { 
+              ...s, 
+              aiScore: null,
+              plagiarismScore: null,
+              correctness: null,
+              grade: null,
+              aiStatus: 'rejected' as const,
+              status: 'pending' as const
+            }
+          : s
+      ));
+      handleOpenGradingModal({ ...submission, aiScore: null, plagiarismScore: null, correctness: null, grade: null });
+      alert('AI assessment rejected. Please provide manual grading.');
+    }
+  };
+
+  const handleAdjustAI = (submissionId: number) => {
+    const submission = submissions.find(s => s.id === submissionId);
+    if (submission) {
+      handleOpenGradingModal(submission);
+    }
+  };
+
   const handleCloseGradingModal = () => {
     setIsGradingModalOpen(false);
     setSelectedSubmission(null);
@@ -126,9 +196,24 @@ const GradingPage = () => {
   const handleSubmitGrade = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedSubmission) {
+      const submission = submissions.find(s => s.id === selectedSubmission.id);
+      const isAdjusted = submission && submission.originalAiScore !== null && 
+        (submission.originalAiScore !== gradingData.aiScore || 
+         submission.originalPlagiarismScore !== gradingData.plagiarismScore ||
+         submission.originalCorrectness !== gradingData.correctness);
+      
       setSubmissions(submissions.map(s => 
         s.id === selectedSubmission.id 
-          ? { ...s, ...gradingData, status: 'graded' as const }
+          ? { 
+              ...s, 
+              ...gradingData, 
+              status: 'graded' as const,
+              aiStatus: isAdjusted ? 'adjusted' as const : (s.aiStatus === 'rejected' ? 'rejected' as const : 'accepted' as const),
+              originalAiScore: s.originalAiScore || gradingData.aiScore,
+              originalPlagiarismScore: s.originalPlagiarismScore || gradingData.plagiarismScore,
+              originalCorrectness: s.originalCorrectness || gradingData.correctness,
+              originalGrade: s.originalGrade || gradingData.grade,
+            }
           : s
       ));
     }
@@ -145,7 +230,7 @@ const GradingPage = () => {
     }
   };
 
-  const pendingCount = submissions.filter(s => s.status === 'pending').length;
+  const pendingCount = submissions.filter(s => s.status === 'pending' || s.status === 'ai-pending').length;
   const gradedCount = submissions.filter(s => s.status === 'graded').length;
 
   return (
@@ -227,29 +312,51 @@ const GradingPage = () => {
               </span>
             </div>
 
-            {submission.status === 'graded' && submission.aiScore !== null ? (
+            {(submission.status === 'graded' || submission.status === 'ai-pending') && submission.aiScore !== null ? (
               <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-purple-600" />
                     <h4 className="font-semibold text-gray-800">AI-Enhanced Grading Results</h4>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleOpenGradingModal(submission)}
-                      className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-xs font-semibold hover:bg-purple-200 transition-all flex items-center gap-1"
-                    >
-                      <Edit className="w-3.5 h-3.5" />
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDeleteGrade(submission.id)}
-                      className="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-xs font-semibold hover:bg-red-200 transition-all"
-                    >
-                      Remove
-                    </button>
+                    {submission.aiStatus && (
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                        submission.aiStatus === 'accepted' ? 'bg-green-100 text-green-700' :
+                        submission.aiStatus === 'rejected' ? 'bg-red-100 text-red-700' :
+                        submission.aiStatus === 'adjusted' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-blue-100 text-blue-700'
+                      }`}>
+                        {submission.aiStatus === 'accepted' ? 'Accepted' :
+                         submission.aiStatus === 'rejected' ? 'Rejected' :
+                         submission.aiStatus === 'adjusted' ? 'Adjusted' : 'Pending Review'}
+                      </span>
+                    )}
                   </div>
                 </div>
+                
+                {/* Show original AI scores if adjusted */}
+                {submission.aiStatus === 'adjusted' && submission.originalAiScore !== null && (
+                  <div className="mb-3 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <p className="text-xs font-semibold text-yellow-800 mb-2">Original AI Assessment:</p>
+                    <div className="grid grid-cols-3 gap-2 text-xs">
+                      <div>
+                        <span className="text-gray-600">AI Score: </span>
+                        <span className="font-semibold">{submission.originalAiScore}%</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Plagiarism: </span>
+                        <span className="font-semibold">{submission.originalPlagiarismScore}%</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Correctness: </span>
+                        <span className="font-semibold">{submission.originalCorrectness}%</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Grade: </span>
+                        <span className="font-semibold">{submission.originalGrade}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
                   <div className="bg-white/80 rounded-lg p-3">
                     <p className="text-xs text-gray-600 mb-1">AI Score</p>
@@ -273,6 +380,55 @@ const GradingPage = () => {
                   <div className="bg-white/80 rounded-lg p-3">
                     <p className="text-xs text-gray-600 mb-1">Feedback</p>
                     <p className="text-sm text-gray-800">{submission.feedback}</p>
+                  </div>
+                )}
+                
+                {/* Action Buttons for AI Assessment */}
+                {submission.status === 'ai-pending' && (
+                  <div className="mt-4 pt-4 border-t border-purple-200">
+                    <p className="text-xs font-semibold text-gray-700 mb-3">Review AI Assessment:</p>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => handleAcceptAI(submission.id)}
+                        className="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-semibold hover:bg-green-200 transition-all flex items-center gap-2"
+                      >
+                        <CheckCircle2 className="w-4 h-4" />
+                        Accept AI Assessment
+                      </button>
+                      <button
+                        onClick={() => handleAdjustAI(submission.id)}
+                        className="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-semibold hover:bg-yellow-200 transition-all flex items-center gap-2"
+                      >
+                        <Settings className="w-4 h-4" />
+                        Adjust Scores
+                      </button>
+                      <button
+                        onClick={() => handleRejectAI(submission.id)}
+                        className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-semibold hover:bg-red-200 transition-all flex items-center gap-2"
+                      >
+                        <XCircle className="w-4 h-4" />
+                        Reject & Grade Manually
+                      </button>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Edit buttons for graded submissions */}
+                {submission.status === 'graded' && (
+                  <div className="mt-4 pt-4 border-t border-purple-200 flex gap-2">
+                    <button
+                      onClick={() => handleAdjustAI(submission.id)}
+                      className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-xs font-semibold hover:bg-purple-200 transition-all flex items-center gap-1"
+                    >
+                      <Edit className="w-3.5 h-3.5" />
+                      Edit Grade
+                    </button>
+                    <button
+                      onClick={() => handleDeleteGrade(submission.id)}
+                      className="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-xs font-semibold hover:bg-red-200 transition-all"
+                    >
+                      Remove
+                    </button>
                   </div>
                 )}
               </div>
@@ -312,44 +468,77 @@ const GradingPage = () => {
               <p className="text-sm font-semibold text-gray-800">{selectedSubmission.assignment}</p>
               <p className="text-xs text-gray-600">Course: {selectedSubmission.course} | Student: {selectedSubmission.student}</p>
             </div>
+            {/* Show AI Assessment if available */}
+            {selectedSubmission.aiScore !== null && selectedSubmission.originalAiScore !== null && (
+              <div className="mb-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-200">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles className="w-5 h-5 text-purple-600" />
+                  <h3 className="font-semibold text-gray-800">AI Assessment Results</h3>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+                  <div>
+                    <p className="text-xs text-gray-600">AI Score</p>
+                    <p className="font-bold text-blue-600">{selectedSubmission.originalAiScore}%</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-600">Plagiarism</p>
+                    <p className="font-bold text-green-600">{selectedSubmission.originalPlagiarismScore}%</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-600">Correctness</p>
+                    <p className="font-bold text-purple-600">{selectedSubmission.originalCorrectness}%</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-600">Suggested Grade</p>
+                    <p className="font-bold text-indigo-600">{selectedSubmission.originalGrade}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <form onSubmit={handleSubmitGrade} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">AI Score (%)</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    value={gradingData.aiScore}
-                    onChange={(e) => setGradingData({ ...gradingData, aiScore: parseInt(e.target.value) || 0 })}
-                    className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Plagiarism (%)</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    value={gradingData.plagiarismScore}
-                    onChange={(e) => setGradingData({ ...gradingData, plagiarismScore: parseInt(e.target.value) || 0 })}
-                    className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
-                    required
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Lower is better</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Correctness (%)</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    value={gradingData.correctness}
-                    onChange={(e) => setGradingData({ ...gradingData, correctness: parseInt(e.target.value) || 0 })}
-                    className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
-                    required
-                  />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {selectedSubmission.aiScore !== null ? 'Adjust Scores (or keep AI scores)' : 'Enter Scores'}
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">AI Score (%)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={gradingData.aiScore}
+                      onChange={(e) => setGradingData({ ...gradingData, aiScore: parseInt(e.target.value) || 0 })}
+                      className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">Plagiarism (%)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={gradingData.plagiarismScore}
+                      onChange={(e) => setGradingData({ ...gradingData, plagiarismScore: parseInt(e.target.value) || 0 })}
+                      className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
+                      required
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Lower is better</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">Correctness (%)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={gradingData.correctness}
+                      onChange={(e) => setGradingData({ ...gradingData, correctness: parseInt(e.target.value) || 0 })}
+                      className="w-full px-4 py-2 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-300 outline-none"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
               <div>
