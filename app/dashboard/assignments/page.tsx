@@ -2,10 +2,10 @@ import { Plus, Eye, FileCheck } from 'lucide-react';
 
 const AssignmentsPage = () => {
   const assignments = [
-    { id: 1, title: 'AI Fundamentals Quiz', course: 'Advanced AI', dueDate: '2025-11-15', submissions: 42, total: 45 },
-    { id: 2, title: 'Machine Learning Project', course: 'Machine Learning Basics', dueDate: '2025-11-18', submissions: 28, total: 32 },
-    { id: 3, title: 'Deep Learning Assignment', course: 'Deep Learning', dueDate: '2025-11-20', submissions: 25, total: 28 },
-    { id: 4, title: 'Data Analysis Report', course: 'Data Science Fundamentals', dueDate: '2025-11-22', submissions: 50, total: 56 },
+    { id: 1, title: 'Practice Assignment: Behaviour Observation', course: 'CHC50121 Diploma', dueDate: '2025-11-15', submissions: 42, total: 45 },
+    { id: 2, title: 'Inclusion Plan Assignment', course: 'CHCECE045', dueDate: '2025-11-18', submissions: 28, total: 32 },
+    { id: 3, title: 'Final Assessment: Behaviour Management Plan', course: 'CHC50121 Diploma', dueDate: '2025-11-20', submissions: 25, total: 28 },
+    { id: 4, title: 'Comprehensive Inclusion Strategy', course: 'CHCECE046', dueDate: '2025-11-22', submissions: 50, total: 56 },
   ];
 
   return (

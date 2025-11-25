@@ -7,8 +7,8 @@ const GradesPage = () => {
   const grades = [
     { 
       id: 1, 
-      course: 'Advanced AI', 
-      assignment: 'AI Fundamentals Assignment', 
+      course: 'CHC50121 Diploma', 
+      assignment: 'Practice Assignment: Behaviour Observation', 
       type: 'assignment',
       score: 92, 
       maxScore: 100, 
@@ -20,8 +20,8 @@ const GradesPage = () => {
     },
     { 
       id: 2, 
-      course: 'ML Basics', 
-      assignment: 'Machine Learning Project', 
+      course: 'CHCECE045', 
+      assignment: 'Inclusion Plan Assignment', 
       type: 'assignment',
       score: 85, 
       maxScore: 100, 
@@ -33,8 +33,8 @@ const GradesPage = () => {
     },
     { 
       id: 3, 
-      course: 'Advanced AI', 
-      assignment: 'AI Fundamentals Quiz', 
+      course: 'CHC50121 Diploma', 
+      assignment: 'Positive Interactions Quiz', 
       type: 'quiz',
       score: 95, 
       maxScore: 100, 
@@ -43,8 +43,8 @@ const GradesPage = () => {
     },
     { 
       id: 4, 
-      course: 'ML Basics', 
-      assignment: 'ML Concepts Quiz', 
+      course: 'CHCECE045', 
+      assignment: 'Child Development and Behaviour Quiz', 
       type: 'quiz',
       score: 88, 
       maxScore: 100, 
@@ -53,8 +53,8 @@ const GradesPage = () => {
     },
     { 
       id: 5, 
-      course: 'Advanced AI', 
-      assignment: 'Neural Networks Essay', 
+      course: 'CHC50121 Diploma', 
+      assignment: 'Final Assessment: Behaviour Management Plan', 
       type: 'assignment',
       score: 90, 
       maxScore: 100, 
@@ -67,8 +67,8 @@ const GradesPage = () => {
   ];
 
   const courseAverages = [
-    { course: 'Advanced AI', average: 92.3, assignments: 2, quizzes: 1 },
-    { course: 'ML Basics', average: 86.5, assignments: 1, quizzes: 1 },
+    { course: 'CHC50121 Diploma', average: 92.3, assignments: 2, quizzes: 1 },
+    { course: 'CHCECE045', average: 86.5, assignments: 1, quizzes: 1 },
   ];
 
   const gradeDistribution = [

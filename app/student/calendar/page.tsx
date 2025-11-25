@@ -33,9 +33,9 @@ const StudentCalendarPage = () => {
     {
       id: 1,
       date: new Date(2025, 10, 12), // Nov 12, 2025 (overdue)
-      title: 'AI Fundamentals Assignment',
+      title: 'Behaviour Observation Assignment',
       type: 'assignment',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 12),
       status: 'overdue',
       priority: 'high',
@@ -44,9 +44,9 @@ const StudentCalendarPage = () => {
     {
       id: 2,
       date: new Date(2025, 10, 15), // Nov 15, 2025 (due soon)
-      title: 'Neural Networks Essay',
+      title: 'Final Assessment: Behaviour Management Plan',
       type: 'assignment',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 15),
       status: 'due-soon',
       priority: 'high',
@@ -55,9 +55,9 @@ const StudentCalendarPage = () => {
     {
       id: 3,
       date: new Date(2025, 10, 18), // Nov 18, 2025
-      title: 'Machine Learning Project',
+      title: 'Inclusion Plan Assignment',
       type: 'assignment',
-      course: 'ML Basics',
+      course: 'CHCECE045',
       dueDate: new Date(2025, 10, 18),
       status: 'upcoming',
       priority: 'medium',
@@ -66,9 +66,9 @@ const StudentCalendarPage = () => {
     {
       id: 4,
       date: new Date(2025, 10, 20), // Nov 20, 2025
-      title: 'ML Concepts Quiz',
+      title: 'Positive Interactions Quiz',
       type: 'quiz',
-      course: 'ML Basics',
+      course: 'CHCECE045',
       dueDate: new Date(2025, 10, 20),
       status: 'upcoming',
       priority: 'medium',
@@ -77,9 +77,9 @@ const StudentCalendarPage = () => {
     {
       id: 5,
       date: new Date(2025, 10, 25), // Nov 25, 2025
-      title: 'Advanced AI Final Exam',
+      title: 'CHC50121 Diploma Final Assessment',
       type: 'exam',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 25),
       status: 'upcoming',
       priority: 'high',
@@ -88,9 +88,9 @@ const StudentCalendarPage = () => {
     {
       id: 6,
       date: new Date(2025, 10, 10), // Nov 10, 2025 (completed)
-      title: 'Machine Learning Project',
+      title: 'Inclusion Plan Assignment',
       type: 'assignment',
-      course: 'ML Basics',
+      course: 'CHCECE045',
       dueDate: new Date(2025, 10, 10),
       status: 'completed',
       priority: 'low',

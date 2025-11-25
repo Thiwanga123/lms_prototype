@@ -26,11 +26,11 @@ const QuizzesPage = () => {
   const [quizzes, setQuizzes] = useState<Quiz[]>([
     { 
       id: 1, 
-      course: 'Advanced AI', 
-      title: 'AI Fundamentals Quiz', 
+      course: 'CHC50121 Diploma', 
+      title: 'Positive Interactions Quiz', 
       questions: [
-        { id: 1, question: 'What is Artificial Intelligence?', type: 'multiple-choice', options: ['A computer program', 'Machine learning', 'Simulation of human intelligence', 'Data processing'], correctAnswer: 'Simulation of human intelligence', points: 10 },
-        { id: 2, question: 'AI can think like humans', type: 'true-false', correctAnswer: 'False', points: 5 },
+        { id: 1, question: 'What is the primary goal of positive behaviour support in early childhood?', type: 'multiple-choice', options: ['To control children', 'To foster respectful interactions', 'To minimize disruptions', 'To enforce rules'], correctAnswer: 'To foster respectful interactions', points: 10 },
+        { id: 2, question: 'Positive reinforcement is more effective than punishment in childcare settings', type: 'true-false', correctAnswer: 'True', points: 5 },
       ],
       duration: 30, 
       attempts: 45, 
@@ -38,10 +38,10 @@ const QuizzesPage = () => {
     },
     { 
       id: 2, 
-      course: 'ML Basics', 
-      title: 'Machine Learning Concepts', 
+      course: 'CHCECE045', 
+      title: 'Child Development and Behaviour', 
       questions: [
-        { id: 1, question: 'What is supervised learning?', type: 'short-answer', correctAnswer: 'Learning with labeled data', points: 15 },
+        { id: 1, question: 'Explain the importance of understanding child development stages when managing behaviour', type: 'short-answer', correctAnswer: 'Understanding development stages helps educators set appropriate expectations and respond effectively to children\'s needs', points: 15 },
       ],
       duration: 45, 
       attempts: 32, 
@@ -70,7 +70,7 @@ const QuizzesPage = () => {
     points: 10,
   });
 
-  const courses = ['Advanced AI', 'ML Basics', 'Deep Learning'];
+  const courses = ['CHC50121 Diploma Early Childhood Education and Care', 'CHCECE045 - Foster Positive Interactions', 'CHCECE046 - Inclusion Strategies'];
 
   const handleOpenModal = (quiz?: Quiz) => {
     if (quiz) {
@@ -219,53 +219,53 @@ const QuizzesPage = () => {
       clearInterval(progressInterval);
       setAiGenerationProgress(100);
 
-      // Generate AI questions based on course and title
+      // Generate AI questions based on course and title (childcare focused)
       const aiGeneratedQuestions: Question[] = [
         {
           id: 1,
-          question: `What is the primary purpose of ${formData.title} in ${formData.course}?`,
+          question: `What is the primary purpose of ${formData.title} in early childhood education?`,
           type: 'multiple-choice',
           options: [
-            'To process data efficiently',
-            'To solve complex problems',
-            'To automate decision-making',
-            'To enhance computational speed'
+            'To control children\'s behaviour',
+            'To support children\'s development and learning',
+            'To minimize classroom disruptions',
+            'To enforce strict rules'
           ],
-          correctAnswer: 'To solve complex problems',
+          correctAnswer: 'To support children\'s development and learning',
           points: 10
         },
         {
           id: 2,
-          question: `${formData.title} is essential for modern ${formData.course} applications.`,
+          question: `${formData.title} is essential for creating positive learning environments in childcare settings.`,
           type: 'true-false',
           correctAnswer: 'True',
           points: 5
         },
         {
           id: 3,
-          question: `Explain the key concepts of ${formData.title} in ${formData.course}.`,
+          question: `Explain the key principles of ${formData.title} in early childhood education.`,
           type: 'short-answer',
-          correctAnswer: 'Key concepts include understanding the fundamental principles, applications, and practical implementations.',
+          correctAnswer: 'Key principles include understanding child development, fostering positive relationships, creating inclusive environments, and supporting individual needs.',
           points: 15
         },
         {
           id: 4,
-          question: `Which of the following best describes ${formData.title}?`,
+          question: `Which of the following best describes effective ${formData.title}?`,
           type: 'multiple-choice',
           options: [
-            'A simple algorithm',
-            'A complex system',
-            'A theoretical concept',
-            'A practical application'
+            'A rigid set of rules',
+            'A child-centered approach',
+            'A one-size-fits-all method',
+            'A disciplinary system'
           ],
-          correctAnswer: 'A practical application',
+          correctAnswer: 'A child-centered approach',
           points: 10
         },
         {
           id: 5,
-          question: `How does ${formData.title} contribute to ${formData.course}?`,
+          question: `How does ${formData.title} contribute to children's social and emotional development?`,
           type: 'short-answer',
-          correctAnswer: 'It provides innovative solutions and enhances the overall effectiveness of the system.',
+          correctAnswer: 'It helps children develop self-regulation, empathy, communication skills, and positive relationships with peers and adults.',
           points: 15
         }
       ];

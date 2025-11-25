@@ -1,41 +1,65 @@
 'use client';
 
 import { BookOpen, Users, FileText, HelpCircle, GraduationCap, Eye, Edit } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const LecturerCoursesPage = () => {
+  const router = useRouter();
   const myCourses = [
     { 
-      id: 1, 
-      name: 'Advanced AI', 
-      code: 'CS401', 
+      id: '1', 
+      name: 'CHC50121 Diploma Early Childhood Education and Care', 
+      code: 'CHC50121', 
       students: 45, 
       assignments: 8, 
       quizzes: 5, 
       materials: 12,
       status: 'Active',
-      semester: 'Fall 2024'
+      semester: 'Fall 2025'
     },
     { 
       id: 2, 
-      name: 'Machine Learning Basics', 
-      code: 'CS302', 
+      name: 'CHCECE045 - Foster Positive and Respectful Interactions', 
+      code: 'CHCECE045', 
       students: 32, 
       assignments: 6, 
       quizzes: 4, 
       materials: 10,
       status: 'Active',
-      semester: 'Fall 2024'
+      semester: 'Fall 2025'
     },
     { 
       id: 3, 
-      name: 'Deep Learning', 
-      code: 'CS501', 
+      name: 'CHCECE046 - Implement Strategies for Inclusion', 
+      code: 'CHCECE046', 
       students: 28, 
       assignments: 7, 
       quizzes: 6, 
       materials: 15,
       status: 'Active',
-      semester: 'Fall 2024'
+      semester: 'Fall 2025'
+    },
+    { 
+      id: 4, 
+      name: 'CHCECE047 - Use Information About Children', 
+      code: 'CHCECE047', 
+      students: 35, 
+      assignments: 5, 
+      quizzes: 3, 
+      materials: 8,
+      status: 'Active',
+      semester: 'Fall 2025'
+    },
+    { 
+      id: 5, 
+      name: 'CHCECE048 - Plan and Implement Children\'s Education', 
+      code: 'CHCECE048', 
+      students: 40, 
+      assignments: 6, 
+      quizzes: 4, 
+      materials: 11,
+      status: 'Active',
+      semester: 'Fall 2025'
     },
   ];
 
@@ -87,11 +111,17 @@ const LecturerCoursesPage = () => {
             </div>
 
             <div className="flex gap-2">
-              <button className="flex-1 bg-purple-100 text-purple-700 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-purple-200 transition-all flex items-center justify-center gap-1.5">
+              <button 
+                onClick={() => router.push(`/lecturer/courses/${course.id}`)}
+                className="flex-1 bg-purple-100 text-purple-700 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-purple-200 transition-all flex items-center justify-center gap-1.5"
+              >
                 <Eye className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                 View
               </button>
-              <button className="flex-1 bg-blue-100 text-blue-700 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-blue-200 transition-all flex items-center justify-center gap-1.5">
+              <button 
+                onClick={() => router.push(`/lecturer/courses/${course.id}`)}
+                className="flex-1 bg-blue-100 text-blue-700 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-blue-200 transition-all flex items-center justify-center gap-1.5"
+              >
                 <Edit className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                 Manage
               </button>

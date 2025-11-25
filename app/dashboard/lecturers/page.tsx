@@ -2,12 +2,12 @@ import { Plus, Eye, Edit, Trash2, User, Mail, BookOpen } from 'lucide-react';
 
 const LecturersPage = () => {
   const lecturers = [
-    { id: 1, name: 'Dr. Sarah Johnson', email: 'sarah@ausilms.com', courses: 3, status: 'Active', department: 'Computer Science' },
-    { id: 2, name: 'Prof. Michael Chen', email: 'michael@ausilms.com', courses: 2, status: 'Active', department: 'AI & ML' },
-    { id: 3, name: 'Dr. Emily Williams', email: 'emily@ausilms.com', courses: 4, status: 'Active', department: 'Data Science' },
-    { id: 4, name: 'Prof. David Brown', email: 'david@ausilms.com', courses: 2, status: 'Active', department: 'Computer Science' },
-    { id: 5, name: 'Dr. Lisa Anderson', email: 'lisa@ausilms.com', courses: 3, status: 'Active', department: 'AI & ML' },
-    { id: 6, name: 'Prof. James Wilson', email: 'james@ausilms.com', courses: 1, status: 'Active', department: 'Data Science' },
+    { id: 1, name: 'Chris Sadea', email: 'chris@ausilms.com', courses: 6, status: 'Active', department: 'Early Childhood Education' },
+    { id: 2, name: 'Sarah Mitchell', email: 'sarah@ausilms.com', courses: 4, status: 'Active', department: 'Child Development' },
+    { id: 3, name: 'Michael Thompson', email: 'michael@ausilms.com', courses: 3, status: 'Active', department: 'Inclusive Practices' },
+    { id: 4, name: 'Emma Davis', email: 'emma@ausilms.com', courses: 5, status: 'Active', department: 'Early Childhood Education' },
+    { id: 5, name: 'David Wilson', email: 'david@ausilms.com', courses: 3, status: 'Active', department: 'Child Development' },
+    { id: 6, name: 'Lisa Anderson', email: 'lisa@ausilms.com', courses: 2, status: 'Active', department: 'Inclusive Practices' },
   ];
 
   return (

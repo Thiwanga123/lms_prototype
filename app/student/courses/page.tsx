@@ -2,9 +2,10 @@
 
 import { BookOpen, Users, Clock, Plus, CheckCircle, X } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface Course {
-  id: number;
+  id: number | string;
   name: string;
   lecturer: string;
   students: number;
@@ -15,60 +16,70 @@ interface Course {
 }
 
 const CoursesPage = () => {
+  const router = useRouter();
   const [courses, setCourses] = useState<Course[]>([
     { 
-      id: 1, 
-      name: 'Deep Learning', 
-      lecturer: 'Dr. Emily Williams', 
-      students: 28, 
-      duration: '12 weeks', 
-      enrolled: false,
-      description: 'Learn advanced deep learning techniques including CNNs, RNNs, and Transformers. This course covers both theoretical foundations and practical implementations.'
-    },
-    { 
-      id: 2, 
-      name: 'Data Science Fundamentals', 
-      lecturer: 'Prof. David Brown', 
-      students: 56, 
-      duration: '10 weeks', 
-      enrolled: false,
-      description: 'Master the fundamentals of data science including data cleaning, visualization, statistical analysis, and machine learning basics.'
-    },
-    { 
-      id: 3, 
-      name: 'Computer Vision', 
-      lecturer: 'Dr. Lisa Anderson', 
-      students: 35, 
-      duration: '14 weeks', 
-      enrolled: false,
-      description: 'Explore computer vision techniques for image processing, object detection, and image classification using modern deep learning methods.'
-    },
-    { 
-      id: 4, 
-      name: 'Advanced AI', 
-      lecturer: 'Dr. Sarah Johnson', 
+      id: '1', 
+      name: 'CHC50121 Diploma Early Childhood Education and Care', 
+      lecturer: 'Chris Sadea', 
       students: 45, 
       duration: '12 weeks', 
       enrolled: true, 
       progress: 65,
-      description: 'Advanced topics in artificial intelligence including neural networks, natural language processing, and AI ethics.'
+      description: 'Comprehensive diploma program covering early childhood education and care principles, practices, and strategies. This course provides essential knowledge and skills for working with children in childcare settings.'
+    },
+    { 
+      id: 2, 
+      name: 'CHCECE045 - Foster Positive and Respectful Interactions', 
+      lecturer: 'Chris Sadea', 
+      students: 32, 
+      duration: '8 weeks', 
+      enrolled: true, 
+      progress: 80,
+      description: 'Learn strategies for fostering positive and respectful interactions with children. This unit covers behaviour support, communication techniques, and creating positive learning environments.'
+    },
+    { 
+      id: 3, 
+      name: 'CHCECE046 - Implement Strategies for Inclusion', 
+      lecturer: 'Chris Sadea', 
+      students: 28, 
+      duration: '10 weeks', 
+      enrolled: false,
+      description: 'Develop skills to implement inclusive practices in early childhood settings. Learn to support all children, including those with diverse needs and backgrounds.'
+    },
+    { 
+      id: 4, 
+      name: 'CHCECE047 - Use Information About Children', 
+      lecturer: 'Chris Sadea', 
+      students: 35, 
+      duration: '8 weeks', 
+      enrolled: false,
+      description: 'Learn how to gather, document, and use information about children to support their learning and development. Includes observation techniques and assessment methods.'
     },
     { 
       id: 5, 
-      name: 'Machine Learning Basics', 
-      lecturer: 'Prof. Michael Chen', 
-      students: 32, 
+      name: 'CHCECE048 - Plan and Implement Children\'s Education', 
+      lecturer: 'Chris Sadea', 
+      students: 40, 
       duration: '10 weeks', 
-      enrolled: true, 
-      progress: 80,
-      description: 'Introduction to machine learning algorithms, supervised and unsupervised learning, and practical applications.'
+      enrolled: false,
+      description: 'Develop skills in planning and implementing educational programs for children. Learn curriculum development, activity planning, and evaluation techniques.'
+    },
+    { 
+      id: 6, 
+      name: 'CHCECE049 - Embed Environmental Responsibility', 
+      lecturer: 'Chris Sadea', 
+      students: 30, 
+      duration: '6 weeks', 
+      enrolled: false,
+      description: 'Learn how to embed environmental responsibility in early childhood programs. Includes sustainability practices and environmental education for children.'
     },
   ]);
 
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleEnroll = (courseId: number) => {
+  const handleEnroll = (courseId: number | string) => {
     setCourses((prev) =>
       prev.map((course) =>
         course.id === courseId
@@ -79,7 +90,7 @@ const CoursesPage = () => {
     alert('Successfully enrolled in the course!');
   };
 
-  const handleUnenroll = (courseId: number) => {
+  const handleUnenroll = (courseId: number | string) => {
     if (confirm('Are you sure you want to unenroll from this course?')) {
       setCourses((prev) =>
         prev.map((course) =>
@@ -152,7 +163,7 @@ const CoursesPage = () => {
                 </div>
                 <div className="flex gap-2">
                   <button
-                    onClick={() => handleViewDetails(course)}
+                    onClick={() => router.push(`/student/courses/${course.id}`)}
                     className="flex-1 bg-purple-100 text-purple-700 py-2.5 rounded-lg text-sm lg:text-base font-semibold hover:bg-purple-200 transition-all"
                   >
                     View Details
@@ -285,7 +296,7 @@ const CoursesPage = () => {
                   <button
                     onClick={() => {
                       setIsModalOpen(false);
-                      // Navigate to course content
+                      router.push(`/student/courses/${selectedCourse.id}`);
                     }}
                     className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-500 hover:to-purple-600 transition-all"
                   >

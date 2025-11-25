@@ -15,9 +15,9 @@ const CalendarPage = () => {
   };
 
   const events = [
-    { date: new Date(2025, 10, 15), title: 'Assignment Due: AI Fundamentals', type: 'assignment' },
-    { date: new Date(2025, 10, 20), title: 'Course: Machine Learning Basics', type: 'course' },
-    { date: new Date(2025, 10, 22), title: 'Final Exam: Advanced AI', type: 'exam' },
+    { date: new Date(2025, 10, 15), title: 'Assignment Due: Behaviour Observation', type: 'assignment' },
+    { date: new Date(2025, 10, 20), title: 'Course: CHCECE045 - Foster Positive Interactions', type: 'course' },
+    { date: new Date(2025, 10, 22), title: 'Final Assessment: CHC50121 Diploma', type: 'exam' },
     { date: new Date(2025, 10, 25), title: 'Holiday Break Starts', type: 'holiday' },
   ];
 

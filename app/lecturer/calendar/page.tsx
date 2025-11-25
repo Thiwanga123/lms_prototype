@@ -34,9 +34,9 @@ const LecturerCalendarPage = () => {
     {
       id: 1,
       date: new Date(2025, 10, 14), // Nov 14, 2025 (overdue)
-      title: 'Grade AI Fundamentals',
+      title: 'Grade Behaviour Observation',
       type: 'grading',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 14),
       status: 'overdue',
       priority: 'high',
@@ -46,9 +46,9 @@ const LecturerCalendarPage = () => {
     {
       id: 2,
       date: new Date(2025, 10, 16), // Nov 16, 2025 (due soon)
-      title: 'Grade ML Project',
+      title: 'Grade Inclusion Plan',
       type: 'grading',
-      course: 'ML Basics',
+      course: 'CHCECE045',
       dueDate: new Date(2025, 10, 16),
       status: 'due-soon',
       priority: 'high',
@@ -58,9 +58,9 @@ const LecturerCalendarPage = () => {
     {
       id: 3,
       date: new Date(2025, 10, 18), // Nov 18, 2025
-      title: 'Upload Course Materials',
+      title: 'Upload Child Development Materials',
       type: 'deadline',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 18),
       status: 'upcoming',
       priority: 'medium',
@@ -69,9 +69,9 @@ const LecturerCalendarPage = () => {
     {
       id: 4,
       date: new Date(2025, 10, 20), // Nov 20, 2025
-      title: 'Create Deep Learning Quiz',
+      title: 'Create Positive Interactions Quiz',
       type: 'assignment',
-      course: 'Deep Learning',
+      course: 'CHCECE045',
       dueDate: new Date(2025, 10, 20),
       status: 'upcoming',
       priority: 'medium',
@@ -82,7 +82,7 @@ const LecturerCalendarPage = () => {
       date: new Date(2025, 10, 22), // Nov 22, 2025
       title: 'Course Review Meeting',
       type: 'course',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 22),
       status: 'upcoming',
       priority: 'low',
@@ -91,9 +91,9 @@ const LecturerCalendarPage = () => {
     {
       id: 6,
       date: new Date(2025, 10, 10), // Nov 10, 2025 (completed)
-      title: 'Grade Neural Networks Essay',
+      title: 'Grade Behaviour Management Plan',
       type: 'grading',
-      course: 'Advanced AI',
+      course: 'CHC50121 Diploma',
       dueDate: new Date(2025, 10, 10),
       status: 'completed',
       priority: 'low',

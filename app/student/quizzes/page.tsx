@@ -26,41 +26,41 @@ const QuizzesPage = () => {
   const [quizzes, setQuizzes] = useState<Quiz[]>([
     { 
       id: 1, 
-      course: 'Advanced AI', 
-      title: 'AI Fundamentals Quiz', 
+      course: 'CHC50121 Diploma', 
+      title: 'Positive Interactions Quiz', 
       questions: [
         {
           id: 1,
-          question: 'What is the primary goal of Artificial Intelligence?',
+          question: 'What is the primary goal of positive behaviour support in early childhood?',
           options: [
-            'To create machines that can think like humans',
-            'To automate all manual tasks',
-            'To replace human intelligence completely',
-            'To build systems that can learn and adapt'
+            'To control children\'s behaviour',
+            'To foster respectful interactions and support development',
+            'To minimize disruptions in the classroom',
+            'To enforce strict rules'
           ],
-          correctAnswer: 3
+          correctAnswer: 1
         },
         {
           id: 2,
-          question: 'Which of the following is a type of machine learning?',
+          question: 'Which of the following is an effective strategy for fostering positive interactions?',
           options: [
-            'Supervised Learning',
-            'Unsupervised Learning',
-            'Reinforcement Learning',
-            'All of the above'
+            'Using time-out for all misbehaviour',
+            'Modeling respectful communication and positive reinforcement',
+            'Ignoring all challenging behaviours',
+            'Punishing negative behaviours immediately'
           ],
-          correctAnswer: 3
+          correctAnswer: 1
         },
         {
           id: 3,
-          question: 'What is a neural network?',
+          question: 'What is the importance of understanding child development stages?',
           options: [
-            'A computer network',
-            'A system inspired by biological neurons',
-            'A database structure',
-            'A programming language'
+            'It helps set appropriate expectations',
+            'It allows for better behaviour management',
+            'It supports responsive teaching practices',
+            'All of the above'
           ],
-          correctAnswer: 1
+          correctAnswer: 3
         }
       ],
       duration: 30, 
@@ -69,30 +69,30 @@ const QuizzesPage = () => {
     },
     { 
       id: 2, 
-      course: 'ML Basics', 
-      title: 'Machine Learning Concepts', 
+      course: 'CHCECE045', 
+      title: 'Child Development and Behaviour', 
       questions: [
         {
           id: 1,
-          question: 'What is overfitting in machine learning?',
+          question: 'What is the most effective approach to managing challenging behaviours?',
           options: [
-            'When a model performs well on training data but poorly on test data',
-            'When a model is too simple',
-            'When training takes too long',
-            'When data is missing'
+            'Immediate punishment',
+            'Understanding the underlying cause and responding appropriately',
+            'Ignoring the behaviour',
+            'Removing the child from the setting'
           ],
-          correctAnswer: 0
+          correctAnswer: 1
         },
         {
           id: 2,
-          question: 'What is the purpose of cross-validation?',
+          question: 'Why is positive reinforcement preferred over punishment in childcare settings?',
           options: [
-            'To speed up training',
-            'To reduce overfitting',
-            'To test model performance on unseen data',
-            'Both B and C'
+            'It is easier to implement',
+            'It builds self-esteem and encourages desired behaviours',
+            'It requires less time',
+            'It is less expensive'
           ],
-          correctAnswer: 3
+          correctAnswer: 1
         }
       ],
       duration: 45, 
@@ -102,30 +102,41 @@ const QuizzesPage = () => {
     },
     { 
       id: 3, 
-      course: 'Advanced AI', 
-      title: 'Neural Networks Quiz', 
+      course: 'CHCECE046', 
+      title: 'Inclusion Strategies Quiz', 
       questions: [
         {
           id: 1,
-          question: 'What is backpropagation?',
+          question: 'What is the primary goal of inclusive practices in early childhood?',
           options: [
-            'A forward pass through the network',
-            'A method to update weights in a neural network',
-            'A type of activation function',
-            'A data preprocessing technique'
+            'To separate children with special needs',
+            'To ensure all children can participate and learn together',
+            'To focus only on typically developing children',
+            'To minimize disruptions in the classroom'
           ],
           correctAnswer: 1
         },
         {
           id: 2,
-          question: 'What is an activation function?',
+          question: 'Which of the following is an effective inclusion strategy?',
           options: [
-            'A function that determines if a neuron fires',
-            'A function that normalizes data',
-            'A function that initializes weights',
-            'A function that calculates loss'
+            'Using the same approach for all children',
+            'Adapting activities to meet individual needs',
+            'Limiting participation of children with disabilities',
+            'Focusing only on academic outcomes'
           ],
-          correctAnswer: 0
+          correctAnswer: 1
+        },
+        {
+          id: 3,
+          question: 'Why is collaboration with families important in inclusion?',
+          options: [
+            'To reduce workload for educators',
+            'To ensure consistent support and understanding of the child',
+            'To avoid legal issues',
+            'To save time'
+          ],
+          correctAnswer: 1
         }
       ],
       duration: 35, 

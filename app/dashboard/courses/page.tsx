@@ -2,10 +2,12 @@ import { Plus, Eye, Edit, GraduationCap } from 'lucide-react';
 
 const CoursesPage = () => {
   const courses = [
-    { id: 1, name: 'Advanced AI', students: 45, status: 'Active', progress: 78, lecturer: 'Dr. Sarah Johnson' },
-    { id: 2, name: 'Machine Learning Basics', students: 32, status: 'Active', progress: 65, lecturer: 'Prof. Michael Chen' },
-    { id: 3, name: 'Deep Learning', students: 28, status: 'Active', progress: 52, lecturer: 'Dr. Emily Williams' },
-    { id: 4, name: 'Data Science Fundamentals', students: 56, status: 'Active', progress: 89, lecturer: 'Prof. David Brown' },
+    { id: 1, name: 'CHC50121 Diploma Early Childhood Education and Care', students: 45, status: 'Active', progress: 78, lecturer: 'Chris Sadea' },
+    { id: 2, name: 'CHCECE045 - Foster Positive and Respectful Interactions', students: 32, status: 'Active', progress: 65, lecturer: 'Chris Sadea' },
+    { id: 3, name: 'CHCECE046 - Implement Strategies for Inclusion', students: 28, status: 'Active', progress: 52, lecturer: 'Chris Sadea' },
+    { id: 4, name: 'CHCECE047 - Use Information About Children', students: 56, status: 'Active', progress: 89, lecturer: 'Chris Sadea' },
+    { id: 5, name: 'CHCECE048 - Plan and Implement Children\'s Education', students: 40, status: 'Active', progress: 72, lecturer: 'Chris Sadea' },
+    { id: 6, name: 'CHCECE049 - Embed Environmental Responsibility', students: 30, status: 'Active', progress: 68, lecturer: 'Chris Sadea' },
   ];
 
   return (

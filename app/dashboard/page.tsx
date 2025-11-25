@@ -31,10 +31,10 @@ const DashboardPage = () => {
   ];
 
   const coursePerformance = [
-    { course: 'Advanced AI', enrolled: 45, completed: 38, avgGrade: 87 },
-    { course: 'ML Basics', enrolled: 32, completed: 28, avgGrade: 82 },
-    { course: 'Deep Learning', enrolled: 28, completed: 24, avgGrade: 85 },
-    { course: 'Data Science', enrolled: 56, completed: 50, avgGrade: 89 },
+    { course: 'CHC50121 Diploma', enrolled: 45, completed: 38, avgGrade: 87 },
+    { course: 'CHCECE045', enrolled: 32, completed: 28, avgGrade: 82 },
+    { course: 'CHCECE046', enrolled: 28, completed: 24, avgGrade: 85 },
+    { course: 'CHCECE047', enrolled: 56, completed: 50, avgGrade: 89 },
   ];
 
   const assignmentStatus = [
@@ -45,10 +45,10 @@ const DashboardPage = () => {
   ];
 
   const recentActivities = [
-    { id: 1, activity: 'New student enrolled in "Advanced AI"', time: '2 hours ago', type: 'enrollment' },
-    { id: 2, activity: 'Assignment submitted by John Doe', time: '4 hours ago', type: 'assignment' },
-    { id: 3, activity: 'New course "Machine Learning Basics" created', time: '1 day ago', type: 'course' },
-    { id: 4, activity: 'Grade updated for Sarah Smith', time: '2 days ago', type: 'grade' },
+    { id: 1, activity: 'New student enrolled in "CHC50121 Diploma"', time: '2 hours ago', type: 'enrollment' },
+    { id: 2, activity: 'Assignment "Behaviour Observation" submitted by Sarah Johnson', time: '4 hours ago', type: 'assignment' },
+    { id: 3, activity: 'New course "CHCECE048 - Plan and Implement Children\'s Education" created', time: '1 day ago', type: 'course' },
+    { id: 4, activity: 'Grade updated for Michael Brown in "Inclusion Plan Assignment"', time: '2 days ago', type: 'grade' },
   ];
 
   const COLORS = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];

@@ -19,9 +19,9 @@ const AssignmentsPage = () => {
   const [assignments, setAssignments] = useState<Assignment[]>([
     { 
       id: 1, 
-      course: 'Advanced AI', 
-      title: 'AI Fundamentals Assignment', 
-      description: 'Write a comprehensive essay on the fundamentals of Artificial Intelligence, covering topics such as machine learning, neural networks, and AI applications.',
+      course: 'CHC50121 Diploma', 
+      title: 'Practice Assignment: Behaviour Observation', 
+      description: 'Observe and document positive interactions in a childcare setting. Submit a 500-word reflection on observed behaviours, including strategies used by educators and their effectiveness.',
       dueDate: '2025-11-15', 
       submissions: 42, 
       total: 45, 
@@ -29,9 +29,9 @@ const AssignmentsPage = () => {
     },
     { 
       id: 2, 
-      course: 'ML Basics', 
-      title: 'Machine Learning Project', 
-      description: 'Develop a machine learning model to predict house prices. Submit your code, dataset, and a report explaining your approach.',
+      course: 'CHCECE045', 
+      title: 'Inclusion Plan Assignment', 
+      description: 'Develop an inclusion plan for a child with specific needs. Include adaptations, support strategies, and how you would collaborate with families and other professionals.',
       dueDate: '2025-11-18', 
       submissions: 28, 
       total: 32, 
@@ -39,10 +39,10 @@ const AssignmentsPage = () => {
     },
     { 
       id: 3, 
-      course: 'Advanced AI', 
-      title: 'Neural Networks Essay', 
-      description: 'Research and write about the architecture and applications of neural networks in modern AI systems.',
-      dueDate: '2025-11-20', 
+      course: 'CHC50121 Diploma', 
+      title: 'Final Assessment: Behaviour Management Plan', 
+      description: 'Develop a comprehensive behaviour management plan for a childcare setting. Include strategies for fostering positive interactions, addressing challenging behaviours, and creating an inclusive environment. Submit a 2000-word report with supporting documentation.',
+      dueDate: '2025-11-30', 
       submissions: 0, 
       total: 45, 
       status: 'Active' 
@@ -62,7 +62,7 @@ const AssignmentsPage = () => {
     file: null as File | null,
   });
 
-  const courses = ['Advanced AI', 'ML Basics', 'Deep Learning'];
+  const courses = ['CHC50121 Diploma Early Childhood Education and Care', 'CHCECE045 - Foster Positive Interactions', 'CHCECE046 - Inclusion Strategies'];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -177,28 +177,30 @@ const AssignmentsPage = () => {
       const aiGeneratedDescription = `This assignment focuses on ${formData.title} within the context of ${formData.course}. 
 
 Students are required to:
-1. Demonstrate a comprehensive understanding of the core concepts
-2. Apply theoretical knowledge to practical scenarios
-3. Analyze and evaluate different approaches and methodologies
-4. Present findings in a clear and structured format
+1. Demonstrate a comprehensive understanding of early childhood education principles
+2. Apply theoretical knowledge to practical childcare scenarios
+3. Analyze and evaluate different approaches to supporting children's development
+4. Present findings in a clear and structured format that reflects professional practice
 
 The assignment should include:
-- A detailed analysis of the topic
-- Real-world applications and examples
-- Critical evaluation of current practices
-- Recommendations for improvement
+- A detailed analysis of the topic relevant to early childhood settings
+- Real-world applications and examples from childcare environments
+- Critical evaluation of current practices and their impact on children
+- Recommendations for improvement based on evidence-based practices
+- Consideration of cultural diversity and inclusion
 
 Submission Requirements:
-- Minimum 2000 words (for essays) or complete code implementation (for projects)
-- Proper citations and references
+- Minimum 1500-2000 words (for written assignments)
+- Proper citations and references using academic standards
 - Clear structure with introduction, body, and conclusion
 - Professional formatting and presentation
+- Reflection on practical implications for childcare practice
 
 Assessment Criteria:
-- Depth of understanding (30%)
-- Application of concepts (30%)
-- Critical analysis (25%)
-- Presentation and formatting (15%)`;
+- Understanding of early childhood principles (30%)
+- Application to practical scenarios (30%)
+- Critical analysis and reflection (25%)
+- Professional presentation and formatting (15%)`;
 
       setFormData({ ...formData, description: aiGeneratedDescription });
       setIsAIGenerating(false);

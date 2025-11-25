@@ -2,12 +2,12 @@ import { Edit, User } from 'lucide-react';
 
 const GradesPage = () => {
   const gradeData = [
-    { student: 'John Doe', course: 'Advanced AI', assignment: 'AI Fundamentals Quiz', grade: 92, maxGrade: 100 },
-    { student: 'Jane Smith', course: 'Machine Learning Basics', assignment: 'ML Project', grade: 98, maxGrade: 100 },
-    { student: 'Bob Johnson', course: 'Deep Learning', assignment: 'DL Assignment', grade: 85, maxGrade: 100 },
-    { student: 'Alice Williams', course: 'Data Science Fundamentals', assignment: 'Data Analysis', grade: 94, maxGrade: 100 },
-    { student: 'Charlie Brown', course: 'Advanced AI', assignment: 'AI Fundamentals Quiz', grade: 78, maxGrade: 100 },
-    { student: 'Diana Prince', course: 'Machine Learning Basics', assignment: 'ML Project', grade: 96, maxGrade: 100 },
+    { student: 'Sarah Johnson', course: 'CHC50121 Diploma', assignment: 'Practice Assignment: Behaviour Observation', grade: 92, maxGrade: 100 },
+    { student: 'Michael Brown', course: 'CHCECE045', assignment: 'Inclusion Plan Assignment', grade: 98, maxGrade: 100 },
+    { student: 'Emma Wilson', course: 'CHCECE046', assignment: 'Comprehensive Inclusion Strategy', grade: 85, maxGrade: 100 },
+    { student: 'David Lee', course: 'CHC50121 Diploma', assignment: 'Final Assessment: Behaviour Management Plan', grade: 94, maxGrade: 100 },
+    { student: 'Olivia Martinez', course: 'CHCECE045', assignment: 'Positive Interactions Quiz', grade: 78, maxGrade: 100 },
+    { student: 'James Taylor', course: 'CHCECE046', assignment: 'Inclusion Strategies Quiz', grade: 96, maxGrade: 100 },
   ];
 
   const getGradeColor = (percentage: number) => {

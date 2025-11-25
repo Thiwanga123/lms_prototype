@@ -3,8 +3,8 @@ import { Plus, Edit, Trash2, User } from 'lucide-react';
 const AnnouncementsPage = () => {
   const announcements = [
     { id: 1, title: 'Holiday Break Schedule', content: 'The LMS will be on holiday break from November 28th to December 2nd.', date: '2025-11-10', author: 'Admin' },
-    { id: 2, title: 'New Course Available', content: 'We are excited to announce our new "Advanced AI" course starting next month!', date: '2025-11-08', author: 'Admin' },
-    { id: 3, title: 'Assignment Submission Reminder', content: 'Please remember to submit your assignments before the due date to avoid penalties.', date: '2025-11-05', author: 'Admin' },
+    { id: 2, title: 'New Course Available', content: 'We are excited to announce our new "CHCECE049 - Embed Environmental Responsibility" course starting next month!', date: '2025-11-08', author: 'Admin' },
+    { id: 3, title: 'Assignment Submission Reminder', content: 'Please remember to submit your childcare assignments (Behaviour Observation, Inclusion Plans) before the due date to avoid penalties.', date: '2025-11-05', author: 'Admin' },
     { id: 4, title: 'System Maintenance', content: 'Scheduled maintenance will occur on November 15th from 2 AM to 4 AM.', date: '2025-11-01', author: 'Admin' },
   ];
 

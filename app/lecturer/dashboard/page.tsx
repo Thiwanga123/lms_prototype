@@ -7,13 +7,13 @@ const LecturerDashboard = () => {
   const { user } = useUser();
 
   const myCourses = [
-    { id: 1, name: 'Advanced AI', students: 45, assignments: 8, materials: 12, status: 'Active' },
-    { id: 2, name: 'Machine Learning Basics', students: 32, assignments: 6, materials: 10, status: 'Active' },
+    { id: 1, name: 'CHC50121 Diploma Early Childhood Education and Care', students: 45, assignments: 8, materials: 12, status: 'Active' },
+    { id: 2, name: 'CHCECE045 - Foster Positive Interactions', students: 32, assignments: 6, materials: 10, status: 'Active' },
   ];
 
   const pendingGrading = [
-    { id: 1, course: 'Advanced AI', assignment: 'AI Fundamentals Quiz', student: 'John Doe', submitted: '2 hours ago' },
-    { id: 2, course: 'ML Basics', assignment: 'ML Project', student: 'Jane Smith', submitted: '5 hours ago' },
+    { id: 1, course: 'CHC50121 Diploma', assignment: 'Practice Assessment: Behaviour Observation', student: 'Sarah Johnson', submitted: '2 hours ago' },
+    { id: 2, course: 'CHCECE045', assignment: 'Inclusion Plan Assignment', student: 'Michael Brown', submitted: '5 hours ago' },
   ];
 
   const stats = [

@@ -15,9 +15,9 @@ interface Material {
 
 const MaterialsPage = () => {
   const [materials, setMaterials] = useState<Material[]>([
-    { id: 1, course: 'Advanced AI', title: 'Introduction to AI', type: 'pdf', uploaded: '2025-11-05', size: '2.5 MB' },
-    { id: 2, course: 'Advanced AI', title: 'Neural Networks Video', type: 'video', uploaded: '2025-11-03', size: '45 MB' },
-    { id: 3, course: 'ML Basics', title: 'ML Concepts Slides', type: 'pdf', uploaded: '2025-11-01', size: '1.8 MB' },
+    { id: 1, course: 'CHC50121 Diploma', title: 'Introduction to Positive Behaviour Support', type: 'pdf', uploaded: '2025-11-05', size: '2.5 MB' },
+    { id: 2, course: 'CHC50121 Diploma', title: 'Building Respectful Relationships Video', type: 'video', uploaded: '2025-11-03', size: '45 MB' },
+    { id: 3, course: 'CHCECE045', title: 'Child Development Stages Guide', type: 'pdf', uploaded: '2025-11-01', size: '1.8 MB' },
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +30,7 @@ const MaterialsPage = () => {
     file: null as File | null,
   });
 
-  const courses = ['Advanced AI', 'ML Basics', 'Deep Learning'];
+  const courses = ['CHC50121 Diploma Early Childhood Education and Care', 'CHCECE045 - Foster Positive Interactions', 'CHCECE046 - Inclusion Strategies'];
 
   const getIcon = (type: string) => {
     switch (type) {

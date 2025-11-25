@@ -8,13 +8,13 @@ const StudentDashboard = () => {
   const { user } = useUser();
 
   const enrolledCourses = [
-    { id: 1, name: 'Advanced AI', progress: 65, assignments: 3, quizzes: 2, grade: 'A', completed: 8, total: 12 },
-    { id: 2, name: 'Machine Learning Basics', progress: 80, assignments: 2, quizzes: 1, grade: 'A+', completed: 10, total: 12 },
+    { id: 1, name: 'CHC50121 Diploma Early Childhood Education and Care', progress: 65, assignments: 3, quizzes: 2, grade: 'A', completed: 8, total: 12 },
+    { id: 2, name: 'CHCECE045 - Foster Positive Interactions', progress: 80, assignments: 2, quizzes: 1, grade: 'A+', completed: 10, total: 12 },
   ];
 
   const upcomingDeadlines = [
-    { id: 1, course: 'Advanced AI', task: 'Assignment: AI Fundamentals', due: 'Tomorrow, 11:59 PM', type: 'assignment' },
-    { id: 2, course: 'ML Basics', task: 'Quiz: ML Concepts', due: 'Nov 20, 2:00 PM', type: 'quiz' },
+    { id: 1, course: 'CHC50121 Diploma', task: 'Assignment: Behaviour Observation', due: 'Tomorrow, 11:59 PM', type: 'assignment' },
+    { id: 2, course: 'CHCECE045', task: 'Quiz: Positive Interactions', due: 'Nov 20, 2:00 PM', type: 'quiz' },
   ];
 
   const stats = [
@@ -27,11 +27,11 @@ const StudentDashboard = () => {
 
   // Progress data for charts
   const progressData = [
-    { week: 'Week 1', 'Advanced AI': 20, 'ML Basics': 25 },
-    { week: 'Week 2', 'Advanced AI': 35, 'ML Basics': 40 },
-    { week: 'Week 3', 'Advanced AI': 45, 'ML Basics': 55 },
-    { week: 'Week 4', 'Advanced AI': 55, 'ML Basics': 70 },
-    { week: 'Week 5', 'Advanced AI': 65, 'ML Basics': 80 },
+    { week: 'Week 1', 'CHC50121 Diploma': 20, 'CHCECE045': 25 },
+    { week: 'Week 2', 'CHC50121 Diploma': 35, 'CHCECE045': 40 },
+    { week: 'Week 3', 'CHC50121 Diploma': 45, 'CHCECE045': 55 },
+    { week: 'Week 4', 'CHC50121 Diploma': 55, 'CHCECE045': 70 },
+    { week: 'Week 5', 'CHC50121 Diploma': 65, 'CHCECE045': 80 },
   ];
 
   const gradeDistribution = [
